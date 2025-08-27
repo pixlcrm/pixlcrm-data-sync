@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (platform === 'unknown') {
       await insertWebhookError({
-        subaccount_id: null,
+        subaccount_id: undefined,
         platform: 'unknown',
         reason: 'Platform detection failed',
         error_message: 'Could not determine platform from payload structure',
@@ -68,7 +68,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       client_name: normalizedOrder.client_name,
       delivery_status: normalizedOrder.delivery_status,
       property_site_url: normalizedOrder.property_site_url,
-      zillow_status: null, // Will be populated in future phases
+      zillow_status: undefined, // Will be populated in future phases
       parser_version: normalizedOrder.parser_version
     }
 
@@ -100,7 +100,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const platform = detectPlatform(payload)
       
       await insertWebhookError({
-        subaccount_id: null,
+        subaccount_id: undefined,
         platform,
         reason: 'Webhook processing failed',
         error_message: error instanceof Error ? error.message : 'Unknown error',

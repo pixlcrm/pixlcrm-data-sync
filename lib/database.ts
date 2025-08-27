@@ -16,7 +16,7 @@ export interface Subaccount {
 
 export interface Order {
   id: string
-  subaccount_id: string
+  subaccount_id: string | null
   platform: string
   external_order_id: string
   order_date: string
@@ -56,7 +56,7 @@ export interface Contact {
 
 export interface WebhookLog {
   id: string
-  subaccount_id?: string
+  subaccount_id?: string | null
   platform: string
   event_type: string
   raw_payload: any
@@ -66,7 +66,7 @@ export interface WebhookLog {
 
 export interface WebhookError {
   id: string
-  subaccount_id?: string
+  subaccount_id?: string | null
   platform: string
   reason: string
   error_message: string
